@@ -1,38 +1,15 @@
-# sv
+# Svelte ToDo App By Edbert
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This is my first beginner Project using Svelte Kit Framework. In Order to learn Svelte Kit Framework I will try this Basic Project First!
 
-## Creating a project
+## About Project
 
-If you're seeing this, you've probably already done this step. Congrats!
+This is a simple ToDo App with HTML and JS only. Users can add and delete tasks.
 
-```bash
-# create a new project in the current directory
-npx sv create
 
-# create a new project in my-app
-npx sv create my-app
-```
+## What I learned
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+I have learned the basic of getting started with Svelte Kit Framework:
+- Basic Routes Svelte Kit and How you interact JS with HTML
+- Each Blocks Svelte as it performs like foreach function in Svelte
+- Syntax of Svelte Events Calling such as (onClick in React, on:click in Svelte)
