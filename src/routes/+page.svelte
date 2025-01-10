@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { fade } from 'svelte/transition';
+
 	type Todo = {
 		text: string
 		done: boolean
@@ -66,7 +68,12 @@
 
 <div class="todos">
 	{#each filteredTodos as todo, i}
-		<div class:completed={todo.done} class="todo">
+		<div
+			class:completed={todo.done}
+			class="todo"
+			in:fade={{ duration: 300 }}
+			out:fade={{ duration: 300 }}
+		>
 			<input oninput={editTodo} data-index={i} value={todo.text} type="text" />
 			<input onchange={toggleTodo} data-index={i} checked={todo.done} type="checkbox" />
 		</div>
