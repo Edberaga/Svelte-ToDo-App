@@ -16,7 +16,7 @@
 	}
 
 	:global(body) {
-		padding-top: 75px;
+		padding-top: 50px;
 		font-family: 'Manrope Variable', sans-serif;
 		background-color: hsl(220 10% 8%);
 	}
