@@ -16,10 +16,12 @@
 	}
 
 	:global(body) {
-		display: grid;
-		place-content: center;
+		padding-top: 75px;
 		font-family: 'Manrope Variable', sans-serif;
-		color: hsl(220 10% 98%);
 		background-color: hsl(220 10% 8%);
 	}
+
+	/*Media Queries*/
+	@media (max-width: 768px) {
+    }
 </style>
