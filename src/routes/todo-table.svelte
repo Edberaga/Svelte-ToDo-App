@@ -1,13 +1,13 @@
 <script lang="ts">
-    import ArrowUpDown from "lucide-svelte/icons/arrow-up-down";
-    import ChevronDown from "lucide-svelte/icons/chevron-down";
-    import { Render, Subscribe } from "svelte-headless-table";
-    import { Button } from "$lib/components/ui/button";
-    import { Input } from "$lib/components/ui/input/index.js";
-    
-    import { columns, table } from "./data";
-    import * as Table from "$lib/components/ui/table";
-    import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
+  import ArrowUpDown from "lucide-svelte/icons/arrow-up-down";
+  import ChevronDown from "lucide-svelte/icons/chevron-down";
+  import { Render, Subscribe } from "svelte-headless-table";
+  import { Button } from "$lib/components/ui/button";
+  import { Input } from "$lib/components/ui/input/index.js";
+  
+  import { columns, table } from "./data";
+  import * as Table from "$lib/components/ui/table";
+  import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
 
   const { headerRows, pageRows, tableAttrs, tableBodyAttrs, pluginStates, flatColumns } = table.createViewModel(columns);
   const { hasNextPage, hasPreviousPage, pageIndex } = pluginStates.page;

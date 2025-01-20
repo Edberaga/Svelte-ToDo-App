@@ -1,3 +1,4 @@
+
 import { createTable, createRender } from "svelte-headless-table";
 import { readable } from "svelte/store";
 import { addPagination, addSortBy, addTableFilter, addHiddenColumns } from "svelte-headless-table/plugins";
@@ -11,7 +12,7 @@ import Circle from "svelte-radix/Circle.svelte";
 import CrossCircled from "svelte-radix/CrossCircled.svelte";
 import Stopwatch from "svelte-radix/Stopwatch.svelte";
 
-type Todo = {
+export type Todo = {
     id: string;
     title: string;
     status: "In Progress" | "Canceled" | "Done" | "To Do";
@@ -19,7 +20,7 @@ type Todo = {
     priority: "Low" | "Medium" | "High";
   };
  
-const data: Todo[] = [
+export const data: Todo[] = [
     {
         id: "TASK-101",
         title: "Create a presentation slide!",

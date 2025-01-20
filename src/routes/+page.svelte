@@ -1,11 +1,10 @@
 <script lang="ts">
-	import DataTable from "./todos/todo-table.svelte";
-	import '../app.css';
-</script>
+	import DataTable from "./todo-table.svelte";
+    import { page } from '$app/stores'
+    import '../app.css'
 
-<svelte:head>
-	<title>Edbert Todo App</title>
-</svelte:head>
+    let summaries = $page.data.summaries;
+  </script>
 
 <div class="hidden h-full flex-1 flex-col space-y-8 p-8 md:flex">
 	<div class="flex items-center justify-between space-y-2">
@@ -19,19 +18,3 @@
 	</div>
 	<DataTable />
 </div>
-
-<style>
-	:global(html, body) {
-		height: 100%;
-	}
-
-	:global(body) {
-		padding-top: 50px;
-		font-family: 'Manrope Variable', sans-serif;
-		background-color: hsl(220 10% 8%);
-	}
-
-	/*Media Queries*/
-	@media (max-width: 768px) {
-    }
-</style>
