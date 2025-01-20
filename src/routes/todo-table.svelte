@@ -1,13 +1,78 @@
 <script lang="ts">
+  import { createTable, createRender } from "svelte-headless-table";
+  import { readable } from "svelte/store";
+  import { addPagination, addSortBy, addTableFilter, addHiddenColumns } from "svelte-headless-table/plugins";
+  import DataTableActions from "./todo-table-actions.svelte";
+
   import ArrowUpDown from "lucide-svelte/icons/arrow-up-down";
   import ChevronDown from "lucide-svelte/icons/chevron-down";
   import { Render, Subscribe } from "svelte-headless-table";
   import { Button } from "$lib/components/ui/button";
   import { Input } from "$lib/components/ui/input/index.js";
-  
-  import { columns, table } from "./data";
   import * as Table from "$lib/components/ui/table";
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
+  
+  export let data;
+
+  const table = createTable(readable(data.summaries), {
+    page: addPagination({initialPageSize: 5}),
+    sort: addSortBy(),
+    filter: addTableFilter({
+      fn: ({ filterValue, value }) =>
+        value.toLowerCase().includes(filterValue.toLowerCase()),
+    }),
+    hide: addHiddenColumns(),
+});
+
+  const columns = table.createColumns([
+    table.column({
+        accessor: "id",
+        header: "ID",
+        plugins: {
+            sort: {
+                disable: true,
+            },
+            filter: {
+                exclude: true,
+            },
+        },
+    }),
+    table.column({
+        accessor: "title",
+        header: "Title",
+    }),
+    table.column({
+        accessor: "status",
+        header: "Status",
+        plugins: {
+            sort: {
+              disable: true,
+            },
+            filter: {
+                exclude: true,
+            },
+        },
+    }),
+    table.column({
+        accessor: "priority",
+        header: "Priority",
+        plugins: {
+            sort: {
+              disable: true,
+            },
+            filter: {
+                exclude: true,
+            },
+        },
+    }),
+    table.column({
+        accessor: ({ id }) => id,
+        header: "",
+        cell: ({ value }) => {
+            return createRender(DataTableActions, { id: value });
+        },
+    }),
+]);
 
   const { headerRows, pageRows, tableAttrs, tableBodyAttrs, pluginStates, flatColumns } = table.createViewModel(columns);
   const { hasNextPage, hasPreviousPage, pageIndex } = pluginStates.page;
@@ -16,10 +81,6 @@
 
   const ids = flatColumns.map((col) => col.id);
   let hideForId = Object.fromEntries(ids.map((id) => [id, true]));
- 
-  $: $hiddenColumnIds = Object.entries(hideForId)
-    .filter(([, hide]) => !hide)
-    .map(([id]) => id);
  
   const hidableCols = ["id", "status", "priority"];
 </script>

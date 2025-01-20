@@ -1,8 +1,4 @@
 
-import { createTable, createRender } from "svelte-headless-table";
-import { readable } from "svelte/store";
-import { addPagination, addSortBy, addTableFilter, addHiddenColumns } from "svelte-headless-table/plugins";
-import DataTableActions from "./todo-table-actions.svelte";
 
 import ArrowDown from "svelte-radix/ArrowDown.svelte";
 import ArrowRight from "svelte-radix/ArrowRight.svelte";
@@ -85,66 +81,6 @@ export const data: Todo[] = [
         priority: "Low",
     }
 ];
-
-export const table = createTable(readable(data), {
-    page: addPagination({initialPageSize: 5}),
-    sort: addSortBy(),
-    filter: addTableFilter({
-      fn: ({ filterValue, value }) =>
-        value.toLowerCase().includes(filterValue.toLowerCase()),
-    }),
-    hide: addHiddenColumns(),
-});
-
-export const columns = table.createColumns([
-    table.column({
-        accessor: "id",
-        header: "ID",
-        plugins: {
-            sort: {
-                disable: true,
-            },
-            filter: {
-                exclude: true,
-            },
-        },
-    }),
-    table.column({
-        accessor: "title",
-        header: "Title",
-    }),
-    table.column({
-        accessor: "status",
-        header: "Status",
-        plugins: {
-            sort: {
-              disable: true,
-            },
-            filter: {
-                exclude: true,
-            },
-        },
-    }),
-    table.column({
-        accessor: "priority",
-        header: "Priority",
-        plugins: {
-            sort: {
-              disable: true,
-            },
-            filter: {
-                exclude: true,
-            },
-        },
-    }),
-    table.column({
-        accessor: ({ id }) => id,
-        header: "",
-        cell: ({ value }) => {
-            return createRender(DataTableActions, { id: value });
-        },
-    }),
-]);
 
 export const labels = [
 	{
