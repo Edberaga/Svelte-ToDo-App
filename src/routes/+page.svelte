@@ -1,10 +1,9 @@
 <script lang="ts">
-	import DataTable from "./todo-table.svelte";
-    import { page } from '$app/stores'
-    import '../app.css'
-
-    let summaries = $page.data.summaries;
-  </script>
+import DataTable from "./todo-table.svelte";
+import '../app.css'
+let { data } = $props();
+console.log(data.summaries);
+</script>
 
 <div class="hidden h-full flex-1 flex-col space-y-8 p-8 md:flex">
 	<div class="flex items-center justify-between space-y-2">
@@ -16,5 +15,5 @@
 			
 		</div>
 	</div>
-	<DataTable />
+	<DataTable {data}/>
 </div>
